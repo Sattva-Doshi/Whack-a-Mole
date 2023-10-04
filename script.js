@@ -25,7 +25,7 @@ function randomHole(holes) {
 }
 
 function peep() {
-    const time = randomTime(200, 1000);
+    const time = randomTime(300, 1000);
     const hole = randomHole(holes);
     hole.classList.add('up');
     setTimeout(() => {
@@ -46,7 +46,6 @@ function startGame() {
 function endGame(){
     timeUp=true;
     sec=0;
-
 }
 
 function hit() {
@@ -59,14 +58,17 @@ function RestartGame(){
   startGame();
 }
 
-function timeremain(){
-       sec=10;
-      setInterval(()=>{
-        if(sec!=-1){
-        timeleft.innerHTML=`${sec}`;
-        sec--;  
-        }                              
-      },1000) 
+function timeremain() {
+    sec = 10;
+    let IntervalId = setInterval(() => {
+        if (sec >= 0) {
+            timeleft.innerHTML = `${sec}`;
+            sec--;
+        }
+        else {
+            clearInterval(IntervalId)
+        }
+    }, 1000)
 }
 
 
